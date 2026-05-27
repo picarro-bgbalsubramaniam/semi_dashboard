@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  jupyter_hub_sat:
+    image: picarro-docker-repo.jfrog.io/jupyter_hub_sat:0.0.17
+    env_file:
+        - ${ENV_FILE:-.env}
+    ports:
+        - '8001:8000'
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./notebook_work:/home/picarro/notebook_work
+    restart: always
+    command: "jupyterhub --Spawner.notebook_dir=/home/picarro/notebook_work"

@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  jupyter_hub_sat:
+    image: jupyter_hub_sat:latest
+    build:
+        context: ./
+        dockerfile: Dockerfile
+        args:
+            - SAT_JUP_USER=$SAT_JUP_USER
+            - SAT_JUP_PASS=$SAT_JUP_PASS
+            - JFROG_API_KEY=$JFROG_API_KEY
+            - JFROG_USER=$JFROG_USER
+    env_file:
+        - ${ENV_FILE:-.env}
+    ports:
+        - '8001:8000'
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./notebook_work:/home/picarro/notebook_work
+    restart: always
+    command: "jupyterhub --Spawner.notebook_dir=/home/picarro/notebook_work"
