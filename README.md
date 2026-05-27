@@ -12,6 +12,7 @@ Implementing jupyter hub from this repository has the possibility of breaking ex
 If you find widgets/ipy tools missing that you need, please pip install them and then notify aegger@picarro.com so he can update dependency list
 
 ## Instllation and Running
+Use spectral-library & sat_mfs git repo for installing the respective libraries
 
 ### Locally From Source
 
